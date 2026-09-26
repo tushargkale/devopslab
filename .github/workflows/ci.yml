@@ -69,3 +69,17 @@ jobs:
 
       - name: Build frontend image
         run: docker build -t devopslab-frontend:ci ./frontend
+
+      - name: Scan backend image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: devopslab-backend:ci
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+
+      - name: Scan frontend image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: devopslab-frontend:ci
+          severity: CRITICAL,HIGH
+          exit-code: "1"
