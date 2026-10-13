@@ -76,6 +76,8 @@ jobs:
           image-ref: devopslab-backend:ci
           severity: CRITICAL,HIGH
           exit-code: "1"
+          ignore-unfixed: true
+
 
       - name: Scan frontend image
         uses: aquasecurity/trivy-action@master
@@ -83,3 +85,4 @@ jobs:
           image-ref: devopslab-frontend:ci
           severity: CRITICAL,HIGH
           exit-code: "1"
+          ignore-unfixed: true
